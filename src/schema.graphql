@@ -1,0 +1,36 @@
+type Query {
+  articles(search: SearchInput): [Article]
+  users(limit: Int): [User],
+  greeting(name: String) : String
+}
+
+type Article {
+  id: ID!
+  title: String
+  body: String
+  author: User
+}
+
+type User {
+  id: ID!
+  name: String
+  email: String
+  age: Int
+  articles: [Article]
+}
+
+input SearchInput {
+  search: String
+}
+
+input UserInput {
+  name: String
+  email: String
+  age: Int
+}
+
+type Mutation {
+  createUser(data: UserInput): User
+  updateUser(id: String, data: UserInput): User
+}
+
